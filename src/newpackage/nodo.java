@@ -10,7 +10,7 @@ package newpackage;
  * @author T800
  */
 public class nodo{
-    String valor;
+    Paciente valor;
     nodo siguiente;
 
     public nodo() {
@@ -18,11 +18,11 @@ public class nodo{
         this.siguiente = null;
     }
 
-    public String getValor() {
+    public Paciente getValor() {
         return valor;
     }
 
-    public void setValor(String valor) {
+    public void setValor(Paciente valor) {
         this.valor = valor;
     }
 

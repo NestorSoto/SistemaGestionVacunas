@@ -20,7 +20,7 @@ public class Pila {
             return false;
         }
     }
-    public void empilar(String v){
+    public void empilar(Paciente v){
         nodo n=new nodo();
         n.valor=v;
         n.siguiente=null;
@@ -51,7 +51,7 @@ public class Pila {
             nodo n=new nodo();
             n=cabeza;
             while(n.siguiente!=null){
-                System.out.println(n.valor);;
+                System.out.println(n.valor.toString());;
                 n=n.siguiente;
             }
             System.out.println(n.valor);

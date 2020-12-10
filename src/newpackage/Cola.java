@@ -24,7 +24,7 @@ public class Cola {
             return false;
         }
     }
-    public String encolar(String v){
+    public String encolar(Paciente v){
         nodo n= new nodo();
         n.valor=v;
         if(vacio()){
@@ -39,7 +39,7 @@ public class Cola {
         if(vacio()){
             return"cola vacia";
         }else{
-            String dato;
+            Paciente dato;
             dato =frente.valor;
             if(Final==frente){
                 Final=null;
@@ -50,9 +50,26 @@ public class Cola {
             return "valor decolado"+ dato;
         }
     }
+    
+    public boolean buscarenCola(Paciente p){
+        boolean encontro=false;
+        if(vacio()){
+            
+        }else{
+            nodo n= new nodo();
+            n =frente;
+            while(n.siguiente!=Final&&!encontro){
+                if(n.valor.getDNI().equalsIgnoreCase(p.getDNI())){
+                    encontro=true;
+                }
+            }
+        }
+        
+        return encontro;
+    }
     public String DobleCola(String dato, int lugar){
         nodo n=new nodo();
-        n.valor=dato;
+        //n.valor=dato;
         if(lugar==1){//entrada por delante
             n.siguiente=frente;
             frente=n;
