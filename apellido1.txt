@@ -1,0 +1,1 @@
+Paciente{nombres=nombre1, apellidos=apellido1, DNI=12345, fechaNac=11/01/12}

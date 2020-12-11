@@ -60,6 +60,25 @@ public class Lista {
         }
         return n;
     }
+    public Paciente BuscaValDNI(String dni){
+        nodo n;
+        n = cab;
+        boolean encontro = false;
+        while (n != null && !encontro) {
+            if (n.getValor().getDNI().equalsIgnoreCase(dni)) {
+                encontro = true;
+            } else {
+                n = n.getSiguiente();
+            }
+        }
+        if(encontro= true){
+            Paciente p= new Paciente();
+            p=n.getValor();
+            return p;
+        }else{
+            return null;
+        }
+    }
 
     public boolean eliminarElemento(Paciente p) {
         boolean eliminar = false;
