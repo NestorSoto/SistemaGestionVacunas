@@ -7,7 +7,7 @@ package newpackage;
 
 public class Pila {
     int cima;
-    nodo cabeza;
+    NodoPila cabeza;
 
     public Pila() {
         this.cima =0;
@@ -20,8 +20,25 @@ public class Pila {
             return false;
         }
     }
-    public void empilar(Paciente v){
-        nodo n=new nodo();
+
+    public int getCima() {
+        return cima;
+    }
+
+    public void setCima(int cima) {
+        this.cima = cima;
+    }
+
+    public NodoPila getCabeza() {
+        return cabeza;
+    }
+
+    public void setCabeza(NodoPila cabeza) {
+        this.cabeza = cabeza;
+    }
+    
+    public void empilar(vacuna v){
+        NodoPila n=new NodoPila();
         n.valor=v;
         n.siguiente=null;
         if(vacio()){
@@ -33,11 +50,11 @@ public class Pila {
         }
         
     }
-    public nodo desempilar(){
+    public NodoPila desempilar(){
         if(cima==0){
             return null;
         }else{
-            nodo n= new nodo();
+            NodoPila n= new NodoPila();
             n=cabeza;
             cabeza=cabeza.siguiente;
            return n;
@@ -48,7 +65,7 @@ public class Pila {
         if(cima==0){
             System.out.println("pila vacia");
         }else{
-            nodo n=new nodo();
+            NodoPila n=new NodoPila();
             n=cabeza;
             while(n.siguiente!=null){
                 System.out.println(n.valor.toString());;
@@ -61,13 +78,20 @@ public class Pila {
     /*
     public static void main(String[] args) {
         Pila p=new Pila();
-        p.empilar("text1");
-        p.empilar("text2");
-        p.empilar("text3");
-        p.empilar("text4");
+        Paciente pa =new Paciente(); 
+        vacuna v= new vacuna();
+        v.setP(pa);
+        v.setDescrpcion("paciente 1");
+        
+        
+        p.empilar(v);
+        p.empilar(v);
+        p.empilar(v);
+        p.empilar(v);
         p.desempilar();
         p.mostrarPila();
         
     }
 */
+
 }
