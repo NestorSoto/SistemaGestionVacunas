@@ -5,30 +5,28 @@
  */
 package newpackage;
 
-import java.util.Date;
-
 public class actividades {
-    Date fecha;
+    int dia;
     String titulo;
     String descripcion; 
 
     public actividades() {
     }
 
-    public actividades(Date fecha, String titulo, String descripcion) {
-        this.fecha = fecha;
+    public actividades(int dia, String titulo, String descripcion) {
+        this.dia = dia;
         this.titulo = titulo;
         this.descripcion = descripcion;
     }
 
-    public Date getFecha() {
-        return fecha;
+    public int getDia() {
+        return dia;
     }
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
+    public void setDia(int dia) {
+        this.dia = dia;
     }
-
+    
     public String getTitulo() {
         return titulo;
     }
@@ -47,7 +45,7 @@ public class actividades {
 
     @Override
     public String toString() {
-        return "actividades{" + "fecha=" + fecha.toString() + ", titulo=" + titulo + ", descripcion=" + descripcion + '}';
+        return "actividades{" + "fecha=" + dia + ", titulo=" + titulo + ", descripcion=" + descripcion + '}';
     }
     
     

@@ -5,6 +5,7 @@
  */
 package newpackage;
 
+import Gestor.cita;
 import java.io.IOException;
 import java.util.Date;
 
@@ -26,13 +27,13 @@ public class gestionador {
         personas = new Lista();
         citas = new Cola();
         vacunados = new Pila();
-        llenarCActividades();
+        //llenarCActividades();
         
     }
 
     // para agragar personas
-    public boolean agregarPersona(String nombres, String apellidos, String DNI, String fechaNac) {
-        Paciente p = new Paciente(nombres, apellidos, DNI, fechaNac);
+    public boolean agregarPersona(String nombres, String apellidos, int DNI, String fechaNac, String direccion) {
+        Paciente p = new Paciente(nombres, apellidos, DNI, fechaNac, direccion);
         //personas.adiciona(nombres);//personas.adiciona(p);
         if (personas.vacio()) {
             personas.adiciona(p);// cambiar por objeto                        
@@ -44,7 +45,7 @@ public class gestionador {
         return true;
     }
     //para buscar informacion
-    public Paciente buscarPaciente(String dni){
+    public Paciente buscarPaciente(int dni){
         Paciente p;
         if(personas.vacio()){
             return null;
@@ -66,13 +67,13 @@ public class gestionador {
     }
 
     // para citas
-    public boolean programarCita(Paciente p) {
+    public boolean programarCita(cita p) {
         boolean guardado = false;
         if (citas.vacio()) {
             citas.encolar(p);
             guardado = true;
         } else {
-            if (citas.buscarenCola(p)) {
+            if (citas.buscarenCola(personas.BuscaValDNI(p.getDni()))) {
                 guardado = false;
             } else {
                 citas.encolar(p);
@@ -92,6 +93,7 @@ public class gestionador {
 
     // fin citas
     //gesion de actividades
+    /*
      void llenarCActividades() {
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 6; j++) {
@@ -102,6 +104,7 @@ public class gestionador {
         }
 
     }
+    */
     public void mostrarCronograma(){
         for(int i=0; i<4;i++){
             for(int j=0;j<6;j++){

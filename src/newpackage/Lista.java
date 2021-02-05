@@ -11,11 +11,13 @@ package newpackage;
  */
 public class Lista {
 
-    public nodo cab, ult;
+    private nodo cab, ult;
+    int size = 0;
 
     public Lista() {
         cab = null;
         ult = null;
+
     }
 
     public boolean vacio() {
@@ -36,6 +38,7 @@ public class Lista {
             ult.setSiguiente(nuevo);
         }
         ult = nuevo;
+        size++;
     }
 
     public void recorre() {
@@ -52,7 +55,7 @@ public class Lista {
         n = cab;
         boolean encontro = false;
         while (n != null && !encontro) {
-            if (n.getValor().getDNI().equalsIgnoreCase(val.getDNI())) {
+            if (n.getValor().getDNI() == val.getDNI()) {
                 encontro = true;
             } else {
                 n = n.getSiguiente();
@@ -60,70 +63,80 @@ public class Lista {
         }
         return n;
     }
-    public Paciente BuscaValDNI(String dni){
+
+    public Paciente BuscaValDNI(int dni) {
         nodo n;
         n = cab;
         boolean encontro = false;
         while (n != null && !encontro) {
-            if (n.getValor().getDNI().equalsIgnoreCase(dni)) {
+            if (n.getValor().getDNI() == dni) {
                 encontro = true;
             } else {
                 n = n.getSiguiente();
             }
         }
-        if(encontro= true){
-            Paciente p= new Paciente();
-            p=n.getValor();
+        if (encontro = true) {
+            Paciente p = new Paciente();
+            p = n.getValor();
             return p;
-        }else{
+        } else {
             return null;
         }
     }
 
     public boolean eliminarElemento(Paciente p) {
         boolean eliminar = false;
+        nodo n = cab;
+       
+        nodo ant = cab;
         if (vacio()) {
 
         } else {
-            nodo n = cab;
-            nodo ant=cab;
-            while (n.siguiente != null && !eliminar) {
-                if (n.valor.getDNI().equalsIgnoreCase(p.getDNI())) {
+
+            while (n != null && !eliminar) {
+                if (n.valor.getDNI() == p.getDNI()) {
                     eliminar = true;
+                    ant.siguiente = n.siguiente;
+
                 } else {
                     ant = n;
                     n = n.siguiente;
                 }
 
             }
+            /*
             if(n==null){
                 eliminar= false;
             }else{
                 ant.siguiente=n.siguiente;
             }
+             */
         }
+
+        size--;
         return eliminar;
+
     }
 
     public boolean existe(Paciente p) {
         boolean encontro = false;
         nodo n = cab;
         while (n != null && !encontro) {
-            if (p.getDNI().equalsIgnoreCase(n.getValor().getDNI())) {
+            if (p.getDNI() == n.getValor().getDNI()) {
                 encontro = true;
             }
         }
         return encontro;
     }
 
-    public nodo BusValRec(nodo n, String val) {
+    public nodo BusValRec(nodo n, int val) {
         if (n == null) {
             return null;
         } else {
-            if (n.getValor().getDNI().equalsIgnoreCase(val)) {
+            if (n.getValor().getDNI() == val) {
                 return n;
             } else {
-                if (n.getValor().getDNI().equalsIgnoreCase(val)) {
+                if (n.getValor().getDNI() == val) {
                     return n;
                 } else {
                     return BusValRec(n.getSiguiente(), val);
@@ -131,6 +144,7 @@ public class Lista {
             }
         }
     }
+
     /*
     public static void main(String[] args) {
     
@@ -148,7 +162,29 @@ public class Lista {
         l.eliminarElemento(p);
         l.recorre();
     }
-*/
-     
+     */
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+
+    public nodo getCab() {
+        return cab;
+    }
+
+    public void setCab(nodo cab) {
+        this.cab = cab;
+    }
+
+    public nodo getUlt() {
+        return ult;
+    }
+
+    public void setUlt(nodo ult) {
+        this.ult = ult;
+    }
 
 }

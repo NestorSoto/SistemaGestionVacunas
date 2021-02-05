@@ -1,21 +1,23 @@
 package newpackage;
 
-import java.util.Date;
+
 
 public class Paciente {
     private String nombres;
     private String apellidos;
-    private String DNI;
+    private int DNI;
     private String fechaNac;
+    String direccion;
 
     public Paciente() {
     }
 
-    public Paciente(String nombres, String apellidos, String DNI, String fechaNac) {
+    public Paciente(String nombres, String apellidos, int DNI, String fechaNac, String direccion) {
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.DNI = DNI;
         this.fechaNac = fechaNac;
+        this.direccion=direccion;
     }
 
     public String getNombres() {
@@ -34,11 +36,11 @@ public class Paciente {
         this.apellidos = apellidos;
     }
 
-    public String getDNI() {
+    public int getDNI() {
         return DNI;
     }
 
-    public void setDNI(String DNI) {
+    public void setDNI(int DNI) {
         this.DNI = DNI;
     }
 
@@ -50,9 +52,20 @@ public class Paciente {
         this.fechaNac = fechaNac;
     }
 
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+    
+    
+
     @Override
+    
     public String toString() {
-        return "Paciente{" + "nombres=" + nombres + ", apellidos=" + apellidos + ", DNI=" + DNI + ", fechaNac=" + fechaNac + '}';
+        return "nombres y apellidos: " + nombres + ", apellidos=" + apellidos + "; DNI:" + DNI + "; fechaNac=" + fechaNac + "direccion"+direccion;
     }
     
 }

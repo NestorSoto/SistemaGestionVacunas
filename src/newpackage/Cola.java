@@ -5,13 +5,11 @@
  */
 package newpackage;
 
-/**
- *
- * @author T800
- */
+import Gestor.cita;
+
 public class Cola {
-    static nodo frente;
-    static nodo Final;
+    public nodoCita frente;
+    public nodoCita Final;
 
     public Cola() {
         this.frente = null;
@@ -24,22 +22,24 @@ public class Cola {
             return false;
         }
     }
-    public String encolar(Paciente v){
-        nodo n= new nodo();
+    public void encolar(cita v){
+        nodoCita n= new nodoCita();
         n.valor=v;
+        n.siguiente=null;
+        
         if(vacio()){
             frente=n;
         }else{
             Final.siguiente=n;
         }
         Final=n;
-        return "dato guardado";
+        
     }
-    public String Desencolar(){
+    public cita Desencolar(){
         if(vacio()){
-            return"cola vacia";
+            return null;
         }else{
-            Paciente dato;
+            cita dato;
             dato =frente.valor;
             if(Final==frente){
                 Final=null;
@@ -47,7 +47,7 @@ public class Cola {
             }else{
                 frente=frente.siguiente;
             }
-            return "valor decolado"+ dato;
+            return dato;
         }
     }
     
@@ -56,10 +56,10 @@ public class Cola {
         if(vacio()){
             
         }else{
-            nodo n= new nodo();
+            nodoCita n= new nodoCita();
             n =frente;
             while(n.siguiente!=Final&&!encontro){
-                if(n.valor.getDNI().equalsIgnoreCase(p.getDNI())){
+                if(n.valor.dni==p.getDNI()){
                     encontro=true;
                 }
             }
@@ -67,6 +67,7 @@ public class Cola {
         
         return encontro;
     }
+    /*
     public String DobleCola(String dato, int lugar){
         nodo n=new nodo();
         //n.valor=dato;
@@ -80,17 +81,48 @@ public class Cola {
             return"Dato guardado al final";
         }
     }
+    */
     public void mostrarCola(){
         if(vacio()){
             System.out.println("cola vacia");
         }else{
-            nodo n= new nodo();
+            nodoCita n= new nodoCita();
             n=frente;
-            while(n.siguiente!=Final){
+            while(n.siguiente!=null){
                 System.out.println(n.valor);
                 n=n.siguiente;
             }
         }
     }
+
+
+    public nodoCita getFrente() {
+        return frente;
+    }
+
+    public void setFrente(nodoCita frente) {
+        this.frente = frente;
+    }
+
+    public nodoCita getFinal() {
+        return Final;
+    }
+
+    public void setFinal(nodoCita Final) {
+        this.Final = Final;
+    }
+    /*
+    public static void main(String[] args) {
+        Cola c= new Cola();
+        cita ci= new cita();
+        ci.setDni(75465212);
+        ci.setFecha("fecha");
+        ci.setHora(12);
+        c.encolar(ci);
+        c.mostrarCola();
+    }
+*/
+
+ 
     
 }
